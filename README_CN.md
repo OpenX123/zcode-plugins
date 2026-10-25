@@ -2,7 +2,13 @@
 
 [English](./README.md)
 
-[ZCode](https://zcode.z.ai) 官方插件市场，收录由 ZCode 维护的插件和社区贡献插件。
+## 自托管 Fork
+
+本仓库由 [OpenX123/zcode-plugins](https://github.com/OpenX123/zcode-plugins) 维护，源于 [zai-org/zcode-plugins](https://github.com/zai-org/zcode-plugins)。自托管市场地址：`https://skill.artai.top/marketplace.json`。
+
+新增社区技能：[ponytail](external_plugins/ponytail/README_CN.md)、[ask-matt](external_plugins/ask-matt/README_CN.md)、[ui-ux-pro-max](external_plugins/ui-ux-pro-max/README_CN.md)。`ask-matt` 引用的其他技能需另行安装。
+
+[ZCode](https://zcode.z.ai) 插件市场的自托管分支，保留上游插件并加入额外社区技能。
 
 你可以在这里浏览插件、在兼容客户端中添加市场源，也可以通过 GitHub Pull Request 提交新插件或改进建议。
 

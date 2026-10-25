@@ -1,13 +1,13 @@
 {
   "name": "zcode-plugins-official",
-  "description": "Official ZCode plugins marketplace: built-in and community plugins for ZCode.",
+  "description": "Self-hosted ZCode plugin marketplace with upstream plugins and additional community skills.",
   "description_i18n": {
-    "en": "Official ZCode plugins marketplace: built-in and community plugins for ZCode.",
-    "zh-CN": "ZCode 官方插件市场：收录 ZCode 内置插件与社区贡献插件。"
+    "en": "Self-hosted ZCode plugin marketplace with upstream plugins and additional community skills.",
+    "zh-CN": "自托管 ZCode 插件市场：收录上游插件与新增社区技能。"
   },
   "owner": {
-    "name": "Z.ai",
-    "url": "https://z.ai"
+    "name": "OpenX123",
+    "url": "https://github.com/OpenX123/zcode-plugins"
   },
   "unlistedPlugins": [
     { "name": "openpencil", "source": "./external_plugins/openpencil" }
@@ -1409,6 +1409,67 @@
         "mcp",
         "verification"
       ]
+    },
+    {
+      "name": "ponytail",
+      "version": "0.1.0",
+      "description": "Simple coding decisions: reuse existing code, prefer native tools, and implement the smallest working solution.",
+      "description_i18n": {
+        "en": "Simple coding decisions: reuse existing code, prefer native tools, and implement the smallest working solution.",
+        "zh-CN": "简化编码决策：复用现有代码，优先标准库和原生能力，实现最小可行改动。"
+      },
+      "author": {
+        "name": "Dietrich Gebert",
+        "url": "https://github.com/DietrichGebert/ponytail"
+      },
+      "keywords": [
+        "coding",
+        "simplicity",
+        "yagni"
+      ],
+      "source": "./external_plugins/ponytail",
+      "category": "developer-tools"
+    },
+    {
+      "name": "ask-matt",
+      "version": "0.1.0",
+      "description": "An explicitly invoked guide to choosing an engineering skill or workflow, with availability checks for optional skills.",
+      "description_i18n": {
+        "en": "An explicitly invoked guide to choosing an engineering skill or workflow, with availability checks for optional skills.",
+        "zh-CN": "手动调用的工程技能与工作流导航，推荐前检查相关技能是否已安装。"
+      },
+      "author": {
+        "name": "Matt Pocock",
+        "url": "https://github.com/mattpocock/skills"
+      },
+      "keywords": [
+        "workflow",
+        "engineering",
+        "routing"
+      ],
+      "source": "./external_plugins/ask-matt",
+      "category": "developer-tools"
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "version": "0.1.0",
+      "description": "UI/UX design guidance with bundled searchable design data and portable Python search tools.",
+      "description_i18n": {
+        "en": "UI/UX design guidance with bundled searchable design data and portable Python search tools.",
+        "zh-CN": "内置可检索设计数据库与 Python 工具的 UI/UX 设计指南。"
+      },
+      "author": {
+        "name": "Next Level Builder",
+        "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"
+      },
+      "keywords": [
+        "ui",
+        "ux",
+        "design",
+        "accessibility"
+      ],
+      "source": "./external_plugins/ui-ux-pro-max",
+      "category": "developer-tools"
     }
   ]
 }

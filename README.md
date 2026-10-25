@@ -2,7 +2,13 @@
 
 [中文文档](./README_CN.md)
 
-The official plugins marketplace for [ZCode](https://zcode.z.ai), featuring plugins maintained by ZCode and contributions from the community.
+## Self-hosted fork
+
+This fork is maintained at [OpenX123/zcode-plugins](https://github.com/OpenX123/zcode-plugins), based on [zai-org/zcode-plugins](https://github.com/zai-org/zcode-plugins). Marketplace URL: `https://skill.artai.top/marketplace.json`.
+
+Added community skills: [ponytail](external_plugins/ponytail), [ask-matt](external_plugins/ask-matt), and [ui-ux-pro-max](external_plugins/ui-ux-pro-max). Skills referenced by `ask-matt` are installed separately.
+
+A self-hosted fork of the [ZCode](https://zcode.z.ai) plugin marketplace, retaining upstream plugins and adding community skills.
 
 Use this repository to browse available plugins, install the marketplace in compatible clients, or propose a new plugin through a GitHub pull request.
 

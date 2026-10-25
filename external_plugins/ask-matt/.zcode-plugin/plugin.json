@@ -1,0 +1,21 @@
+{
+  "name": "ask-matt",
+  "version": "0.1.0",
+  "description": "An explicitly invoked guide to choosing an engineering skill or workflow, with availability checks for optional skills.",
+  "description_i18n": {
+    "en": "An explicitly invoked guide to choosing an engineering skill or workflow, with availability checks for optional skills.",
+    "zh-CN": "手动调用的工程技能与工作流导航，推荐前检查相关技能是否已安装。"
+  },
+  "author": {
+    "name": "Matt Pocock",
+    "url": "https://github.com/mattpocock/skills"
+  },
+  "skills": "./skills/",
+  "license": "MIT",
+  "homepage": "https://github.com/mattpocock/skills",
+  "keywords": [
+    "workflow",
+    "engineering",
+    "routing"
+  ]
+}

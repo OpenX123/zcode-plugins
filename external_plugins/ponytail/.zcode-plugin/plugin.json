@@ -1,0 +1,21 @@
+{
+  "name": "ponytail",
+  "version": "0.1.0",
+  "description": "Simple coding decisions: reuse existing code, prefer native tools, and implement the smallest working solution.",
+  "description_i18n": {
+    "en": "Simple coding decisions: reuse existing code, prefer native tools, and implement the smallest working solution.",
+    "zh-CN": "简化编码决策：复用现有代码，优先标准库和原生能力，实现最小可行改动。"
+  },
+  "author": {
+    "name": "Dietrich Gebert",
+    "url": "https://github.com/DietrichGebert/ponytail"
+  },
+  "skills": "./skills/",
+  "license": "MIT",
+  "homepage": "https://github.com/DietrichGebert/ponytail",
+  "keywords": [
+    "coding",
+    "simplicity",
+    "yagni"
+  ]
+}

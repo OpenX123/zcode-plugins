@@ -6,7 +6,7 @@
 
 This fork is maintained at [OpenX123/zcode-plugins](https://github.com/OpenX123/zcode-plugins), based on [zai-org/zcode-plugins](https://github.com/zai-org/zcode-plugins). Marketplace URL: `https://skill.artai.top/marketplace.json`.
 
-Added community skills: [ponytail](external_plugins/ponytail), [ask-matt](external_plugins/ask-matt), and [ui-ux-pro-max](external_plugins/ui-ux-pro-max). Skills referenced by `ask-matt` are installed separately.
+Added community skills: [ponytail](external_plugins/ponytail), [ask-matt](external_plugins/ask-matt), and [ui-ux-pro-max](external_plugins/ui-ux-pro-max). Skills referenced by `ask-matt` are installed separately. See the [deployment record (Chinese)](DEPLOYMENT_CN.md) for release and validation details.
 
 A self-hosted fork of the [ZCode](https://zcode.z.ai) plugin marketplace, retaining upstream plugins and adding community skills.
 

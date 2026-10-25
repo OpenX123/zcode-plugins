@@ -6,7 +6,7 @@
 
 本仓库由 [OpenX123/zcode-plugins](https://github.com/OpenX123/zcode-plugins) 维护，源于 [zai-org/zcode-plugins](https://github.com/zai-org/zcode-plugins)。自托管市场地址：`https://skill.artai.top/marketplace.json`。
 
-新增社区技能：[ponytail](external_plugins/ponytail/README_CN.md)、[ask-matt](external_plugins/ask-matt/README_CN.md)、[ui-ux-pro-max](external_plugins/ui-ux-pro-max/README_CN.md)。`ask-matt` 引用的其他技能需另行安装。
+新增社区技能：[ponytail](external_plugins/ponytail/README_CN.md)、[ask-matt](external_plugins/ask-matt/README_CN.md)、[ui-ux-pro-max](external_plugins/ui-ux-pro-max/README_CN.md)。`ask-matt` 引用的其他技能需另行安装。[部署记录](DEPLOYMENT_CN.md)包含发布与验证范围。
 
 [ZCode](https://zcode.z.ai) 插件市场的自托管分支，保留上游插件并加入额外社区技能。
 

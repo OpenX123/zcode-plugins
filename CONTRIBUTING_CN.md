@@ -17,6 +17,7 @@
 - 外部团队、合作方和社区新增插件位于 `external_plugins/` 下唯一的 kebab-case 目录；`plugins/` 保留给官方维护插件；
 - 包含 `.zcode-plugin/plugin.json`，并填写 `name`、`description`、`version` 和 `author`；
 - 在根目录 [`marketplace.json`](./marketplace.json) 中注册，且 `name`、`version` 和描述保持一致；
+- 市场条目必须填写 `icon`，提交对应的 `assets/<资源名>/icon.png` 正方形 PNG，并在 `assets/icon-sources.json` 记录来源和 SHA-256；优先使用 GitHub 项目现有 logo，没有独立 logo 时使用作者或组织头像。缺图标或图片无效将阻止发布；
 - 至少提供一种有效组件：command、skill、hook、agent 或 MCP server；
 - 提供语义一致的面向用户的 `README.md` 和 `README_CN.md`；
 - 使用一种支持的分类：`developer-tools`、`productivity`、`utilities`、`finance`、`guides`、`template` 或 `other`。

@@ -17,6 +17,7 @@ Every plugin must:
 - live in a unique kebab-case directory under `external_plugins/` for partner/community submissions; `plugins/` is reserved for officially maintained plugins;
 - include `.zcode-plugin/plugin.json` with `name`, `description`, `version`, and `author`;
 - have a matching `name`, `version`, and description in the root [`marketplace.json`](./marketplace.json);
+- provide a required HTTPS `icon` URL and matching square PNG under `assets/<asset-name>/icon.png`, with provenance and SHA-256 in `assets/icon-sources.json`; prefer the upstream project logo or GitHub author/organization avatar. Missing or invalid icons block publication;
 - provide at least one useful component: command, skill, hook, agent, or MCP server;
 - include equivalent user-facing `README.md` and `README_CN.md` files; and
 - use one supported category: `developer-tools`, `productivity`, `utilities`, `finance`, `guides`, `template`, or `other`.

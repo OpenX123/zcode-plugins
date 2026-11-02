@@ -20,6 +20,8 @@ Conventions:
 
 - One subdirectory per plugin, named after the plugin (kebab-case).
 - Icons: `icon.png`, square, ideally 256×256 (or larger power of two).
+- Every listed plugin must provide an HTTPS `icon` URL and matching local PNG. Both validation and publication check it; publication rebases icons to `CDN_BASE_URL` (`https://skill.artai.top` for the Hong Kong marketplace).
+- Prefer an existing upstream logo, then its GitHub author/organization avatar. If neither supplies a suitable icon, create one. Vendor the image and record its source instead of hotlinking GitHub at runtime.
 - Solid or transparent backgrounds are supported; corner clipping belongs to the client.
 - `tests/test_icon_assets.py` owns the shared PNG integrity/square-canvas, CDN reference,
   and provenance hash checks. Do not pin dimensions, alpha channels, or image hashes

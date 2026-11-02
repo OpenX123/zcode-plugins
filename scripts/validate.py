@@ -19,8 +19,11 @@ from __future__ import annotations
 
 import json
 import re
+import struct
 import sys
+import zlib
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parent.parent
 PLUGIN_ROOTS = {"plugins": "official", "external_plugins": "community"}
@@ -115,6 +118,47 @@ def plugin_manifest_path(plugin_dir: Path) -> Path:
     if preferred.is_file():
         return preferred
     return plugin_dir / ".claude-plugin" / "plugin.json"
+
+
+def icon_asset_path(entry: dict, root: Path) -> str:
+    """校验市场图标，返回发布目录内的资源路径。"""
+    icon = entry.get("icon")
+    if not isinstance(icon, str) or not icon.strip():
+        raise ValueError("missing 'icon': provide an HTTPS URL and its local PNG asset")
+    url = urlsplit(icon)
+    match = re.fullmatch(r".*/(assets/[a-z0-9]+(?:-[a-z0-9]+)*/icon\.png)", url.path)
+    if url.scheme != "https" or not url.hostname or url.username or url.password or not match:
+        raise ValueError("icon must be an HTTPS URL ending in assets/<asset-name>/icon.png")
+    relative = match[1]
+    path = root / relative
+    if any(part.is_symlink() for part in (root / "assets", path.parent, path)) or not path.is_file():
+        raise ValueError(f"icon asset missing or symlink: {relative}")
+    data = path.read_bytes()
+    try:
+        if data[:8] != b"\x89PNG\r\n\x1a\n":
+            raise ValueError("not a PNG")
+        chunks, offset = [], 8
+        while offset < len(data):
+            length = int.from_bytes(data[offset:offset + 4], "big")
+            end = offset + length + 12
+            if end > len(data):
+                raise ValueError("truncated PNG")
+            kind, payload = data[offset + 4:offset + 8], data[offset + 8:end - 4]
+            if zlib.crc32(kind + payload) != int.from_bytes(data[end - 4:end], "big"):
+                raise ValueError("PNG checksum mismatch")
+            chunks.append((kind, payload))
+            offset = end
+        if not chunks or chunks[0][0] != b"IHDR" or chunks[-1] != (b"IEND", b""):
+            raise ValueError("incomplete PNG")
+        width, height, depth, colour, compression, filtering, interlace = struct.unpack(">IIBBBBB", chunks[0][1])
+        depths = {0: (1, 2, 4, 8, 16), 2: (8, 16), 3: (1, 2, 4, 8), 4: (8, 16), 6: (8, 16)}
+        if width <= 0 or width != height or depth not in depths.get(colour, ()) or (compression, filtering) != (0, 0) or interlace not in (0, 1):
+            raise ValueError("PNG must use a valid square canvas")
+        if not zlib.decompress(b"".join(payload for kind, payload in chunks if kind == b"IDAT")):
+            raise ValueError("empty PNG")
+    except (ValueError, struct.error, zlib.error) as exc:
+        raise ValueError(f"invalid icon asset {relative}: {exc}") from exc
+    return relative
 
 
 def resolve_plugin_dir(entry: dict, root: Path) -> Path:
@@ -216,6 +260,10 @@ def main() -> int:
             if not entry.get(field):
                 err(f"{label}: missing '{field}'")
         validate_i18n(label, entry, "description_i18n", ("en", "zh-CN"))
+        try:
+            icon_asset_path(entry, ROOT)
+        except (ValueError, OSError) as exc:
+            err(f"{label}: {exc}")
 
         version = entry.get("version", "")
         if version and not SEMVER.match(version):

@@ -9,7 +9,6 @@ import zlib
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
-PREFIX = "https://cdn-zcode.z.ai/zcode/official-plugin/assets/"
 
 
 class IconAssetsTest(unittest.TestCase):
@@ -53,14 +52,14 @@ class IconAssetsTest(unittest.TestCase):
                 self.assertTrue(zlib.decompress(compressed))
                 self.assertEqual(chunks[-1], (b"IEND", b""))
 
-    def test_catalog_cdn_references_exist(self):
+    def test_every_catalog_icon_has_local_asset(self):
         for entry in json.loads((ROOT / "marketplace.json").read_text())["plugins"]:
-            icon = entry.get("icon", "")
-            if icon.startswith(PREFIX):
-                with self.subTest(plugin=entry["name"]):
-                    path = (ASSETS / urlsplit(icon).path.split("/assets/", 1)[1]).resolve()
-                    self.assertTrue(path.is_relative_to(ASSETS.resolve()))
-                    self.assertTrue(path.is_file(), str(path))
+            with self.subTest(plugin=entry["name"]):
+                icon = urlsplit(entry["icon"])
+                self.assertEqual(icon.scheme, "https")
+                path = (ASSETS / icon.path.split("/assets/", 1)[1]).resolve()
+                self.assertTrue(path.is_relative_to(ASSETS.resolve()))
+                self.assertTrue(path.is_file(), str(path))
 
     def test_provenance_hashes_match_assets(self):
         records = json.loads((ASSETS / "icon-sources.json").read_text())

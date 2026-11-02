@@ -34,7 +34,7 @@ import sys
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path
-from validate import PLUGIN_ROOTS, plugin_manifest_path, resolve_plugin_dir, ui_surface_errors
+from validate import PLUGIN_ROOTS, icon_asset_path, plugin_manifest_path, resolve_plugin_dir, ui_surface_errors
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
@@ -186,6 +186,8 @@ def build_index_entry(entry: dict, artifact_path: Path, base_url: str) -> dict:
     size = artifact_path.stat().st_size
 
     plugin_index = dict(entry)
+    # 缺图标曾直接变成商店占位图；发布入口必须复用登记校验，并使用当前站点资源。
+    plugin_index["icon"] = f"{base_url}/{icon_asset_path(entry, ROOT)}"
     plugin_dir = resolve_plugin_dir(entry, ROOT)
     manifest = json.loads(plugin_manifest_path(plugin_dir).read_text(encoding="utf-8"))
     problems = ui_surface_errors(manifest, plugin_dir)
@@ -257,6 +259,10 @@ def main() -> int:
         (ROOT / "marketplace.json").read_text(encoding="utf-8")
     )
     base_url = cdn_base_url()
+
+    # 在清理旧制品前拒绝缺失或损坏的图标，避免失败发布破坏上一份分发目录。
+    for entry in marketplace["plugins"]:
+        icon_asset_path(entry, ROOT)
 
     if DIST.exists():
         shutil.rmtree(DIST)

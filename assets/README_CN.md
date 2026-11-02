@@ -19,6 +19,8 @@ icon: "https://cdn-zcode.z.ai/zcode/official-plugin/assets/android-emulator/icon
 
 - 每个插件一个子目录，目录名与插件名一致（kebab-case）。
 - 图标：`icon.png`，正方形，建议 256×256（或更大的 2 的幂）。
+- 上架插件必须提供 `icon` HTTPS URL 和对应的本地 PNG。校验器和发布器均检查图片，发布时自动使用 `CDN_BASE_URL`，香港市场为 `https://skill.artai.top`。
+- 优先复用项目现有 logo；没有独立 logo 时复用 GitHub 作者或组织头像，两者都没有合适图片时自行绘制。保存到本目录并记录来源，避免运行时依赖 GitHub 热链。
 - 支持实色或透明背景；圆角裁切由客户端负责。
 - `tests/test_icon_assets.py` 统一检查 PNG 完整性、正方形画布、CDN 引用和来源哈希。
   单个插件测试不再固定尺寸、透明通道或图片哈希；修改已记录资产时同步更新 `icon-sources.json`。

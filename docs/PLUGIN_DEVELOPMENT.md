@@ -148,6 +148,7 @@ The following tables describe the fields used by the public marketplace and plug
 | Field | Required | Meaning |
 |-|-|-|
 | `name` | ✅ | Plugin name. |
+| `icon` | ✅ | HTTPS URL whose `assets/<asset-name>/icon.png` path exists in this repository; a complete square PNG is required for intake and publication. Prefer the upstream logo, then the GitHub author/organization avatar. Record provenance and SHA-256 in `assets/icon-sources.json`. The publisher rebases the URL to `CDN_BASE_URL`. Market-only icon changes do not change immutable plugin ZIPs or versions. |
 | `source` |  | Plugin location; a relative path or a source object. |
 | `description` / `version` |  | Display description and immutable version. |
 | `category` / `tags` |  | Category string and searchable tag array. |

@@ -2552,5 +2552,56 @@
     "homepage": "https://www.liblib.tv",
     "mimeType": "image/png",
     "sha256": "ada9717d540928baec64105056b93e8e8bc6cfbff145f9f3a9eadb6dd9b90689"
+  },
+  {
+    "name": "ponytail",
+    "icon": "ponytail/icon.png",
+    "source": "https://github.com/DietrichGebert/ponytail/blob/96608e078b2d5ea607c5c3b8b5a54d1c1fba6846/assets/logo.png",
+    "homepage": "https://github.com/DietrichGebert/ponytail",
+    "matchedBy": "upstream-repository-logo",
+    "mimeType": "image/png",
+    "transformation": "上游图案等比缩放并居中于 256px 正方形画布。",
+    "sha256": "cdcacf16d53bfe06eaaa4189b3e827cb39c98083b37b7e82f7929e88946089b5"
+  },
+  {
+    "name": "ask-matt",
+    "icon": "ask-matt/icon.png",
+    "source": "https://avatars.githubusercontent.com/u/28293365?v=4&s=256",
+    "homepage": "https://github.com/mattpocock/skills",
+    "matchedBy": "upstream-github-author-avatar",
+    "mimeType": "image/png",
+    "transformation": "上游 GitHub 头像缩放为 256px 正方形 PNG；无独立项目 logo。",
+    "sha256": "77eb89f3b2cf3f675aced99ce640c029103d07663acb6528105cc226efd49448"
+  },
+  {
+    "name": "ui-ux-pro-max",
+    "icon": "ui-ux-pro-max/icon.png",
+    "source": "https://avatars.githubusercontent.com/u/246974152?v=4&s=256",
+    "homepage": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+    "matchedBy": "upstream-github-organization-avatar",
+    "mimeType": "image/png",
+    "transformation": "上游 GitHub 头像缩放为 256px 正方形 PNG；无独立项目 logo。",
+    "sha256": "e5b8c142e751ef3fdfb3fe7ea17c9df971b09bb15b3169d5f01a2e27c580b356"
+  },
+  {
+    "name": "jev-decisions",
+    "icon": "jev-decisions/icon.png",
+    "source": "https://avatars.githubusercontent.com/u/260253?v=4&s=256",
+    "homepage": "https://github.com/jkudish/jev-mcp",
+    "matchedBy": "upstream-github-author-avatar",
+    "mimeType": "image/png",
+    "transformation": "上游 GitHub 头像缩放为 256px 正方形 PNG；无独立项目 logo。",
+    "sha256": "076ca691913fad3c1a07d6b2059a0f0f714163ea16d55450f851538c92225e1d"
+  },
+  {
+    "name": "ruic-card",
+    "icon": "ruic-card/icon.png",
+    "source": "assets/ruic-card/icon.svg",
+    "homepage": "https://github.com/HRuiCcc/RuiC-card-skill",
+    "matchedBy": "authored-holographic-card-icon",
+    "mimeType": "image/png",
+    "transformation": "上游仅有 GitHub 默认头像，无独立 logo；自绘全息卡片 SVG，导出 256px PNG。",
+    "sha256": "4aa4ad48228818c80bf5f2989fe03028b3abaa1ba86f2696620d40fe033cf434",
+    "license": "Apache-2.0"
   }
 ]

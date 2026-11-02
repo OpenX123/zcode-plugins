@@ -28,10 +28,14 @@ class CatalogClassificationTest(unittest.TestCase):
             "ui": {"surfaces": [{"id": "panel", "title": "Panel", "server": "panel",
                 "resourceUri": "ui://panel/app", "availability": "session"}]},
         }
-        self.entry = {**self.manifest, "source": "./external_plugins/panel", "category": "productivity"}
+        self.entry = {**self.manifest, "source": "./external_plugins/panel", "category": "productivity",
+            "icon": "https://upstream.example/assets/panel/icon.png"}
         self.catalog = {"name": "fixture", "owner": {"name": "Example"},
             "description": "Fixture", "description_i18n": {"en": "Fixture", "zh-CN": "夹具"},
             "plugins": [self.entry]}
+        icon = self.root / "assets/panel/icon.png"
+        icon.parent.mkdir(parents=True)
+        shutil.copyfile(ROOT / "assets/github/icon.png", icon)
         self.write_fixture()
 
     def write_fixture(self):
@@ -58,6 +62,37 @@ class CatalogClassificationTest(unittest.TestCase):
         self.assertIn("ui", published["componentTypes"])
         self.assertEqual(published["category"], "productivity")
         self.assertEqual(published["source"]["type"], "zip")
+        self.assertEqual(published["icon"], f"{build_dist.cdn_base_url()}/assets/panel/icon.png")
+
+    def test_missing_or_invalid_icon_is_rejected_at_intake_and_publication(self):
+        for value in (None, "", "   ", 123, "http://example.com/assets/panel/icon.png",
+                      "https://example.com/logo.png", "https://example.com/assets/missing/icon.png"):
+            with self.subTest(icon=value):
+                self.entry["icon"] = value
+                self.write_fixture()
+                code, message = self.check()
+                self.assertNotEqual(code, 0, message)
+                self.assertIn("icon", message)
+                with self.assertRaisesRegex(ValueError, "icon"):
+                    self.build()
+
+    def test_corrupt_icon_cannot_replace_previous_distribution(self):
+        self.build()
+        published = self.root / "dist/marketplace.json"
+        original = published.read_bytes()
+        (self.root / "assets/panel/icon.png").write_bytes(b"not a PNG")
+        self.assertIn("icon", self.check()[1])
+        with self.assertRaisesRegex(ValueError, "icon"):
+            self.build()
+        self.assertEqual(published.read_bytes(), original)
+
+    def test_icon_rebase_does_not_change_plugin_artifact(self):
+        original = self.build()
+        self.entry["icon"] = "https://mirror.example/prefix/assets/panel/icon.png"
+        self.write_fixture()
+        mirrored = self.build()
+        self.assertEqual(mirrored["icon"], original["icon"])
+        self.assertEqual(mirrored["_artifact"], original["_artifact"])
 
     def test_moving_source_keeps_install_identity_and_artifact_bytes(self):
         external = self.build()

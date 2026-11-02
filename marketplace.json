@@ -1252,6 +1252,7 @@
     },
     {
       "name": "ruic-card",
+      "icon": "https://skill.artai.top/assets/ruic-card/icon.png",
       "source": "./external_plugins/ruic-card",
       "description": "Holographic collectible-card generator: layered artwork + Blender + Three.js, in two routes - paint the four layers from a description or reference image, or derive them from a photo you already have (rembg cutout, optional watermark removal, animation render and MP4 / WeChat-sized GIF deliverables). Outputs an interactive parallax card website plus an editable card.blend project.",
       "description_i18n": {
@@ -1389,6 +1390,7 @@
     },
     {
       "name": "jev-decisions",
+      "icon": "https://skill.artai.top/assets/jev-decisions/icon.png",
       "source": "./external_plugins/jev-decisions",
       "description": "Calibrated judgment tools for ZCode agents via the community jev-mcp server: verify claims against evidence, screen untrusted text, classify, decide, and gate task completion. Ships a skill that teaches when to reach for a judgment tool instead of answering directly.",
       "description_i18n": {
@@ -1412,6 +1414,7 @@
     },
     {
       "name": "ponytail",
+      "icon": "https://skill.artai.top/assets/ponytail/icon.png",
       "version": "0.1.0",
       "description": "Simple coding decisions: reuse existing code, prefer native tools, and implement the smallest working solution.",
       "description_i18n": {
@@ -1432,6 +1435,7 @@
     },
     {
       "name": "ask-matt",
+      "icon": "https://skill.artai.top/assets/ask-matt/icon.png",
       "version": "0.1.0",
       "description": "An explicitly invoked guide to choosing an engineering skill or workflow, with availability checks for optional skills.",
       "description_i18n": {
@@ -1452,6 +1456,7 @@
     },
     {
       "name": "ui-ux-pro-max",
+      "icon": "https://skill.artai.top/assets/ui-ux-pro-max/icon.png",
       "version": "0.1.0",
       "description": "UI/UX design guidance with bundled searchable design data and portable Python search tools.",
       "description_i18n": {

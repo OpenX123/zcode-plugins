@@ -30,6 +30,11 @@ jobs:
       - uses: pnpm/action-setup@v4
         with:
           version: "10.33.2"
+      - name: Validate
+        run: |
+          python -m unittest discover -s tests -p 'test_icon_assets.py'
+          python -m unittest discover -s tests -p 'test_catalog_classification.py'
+          python scripts/validate.py
       # Craft Web snapshots are compiled from pinned upstream sources, not committed.
       # Keep compiled snapshots and the installed Trunk between runs.
       - uses: actions/cache@v4
@@ -49,9 +54,9 @@ jobs:
           pnpm lint
           pnpm test
           pnpm test:artifacts
-      - name: Validate
-        run: python scripts/validate.py
       - name: Build distribution
+        env:
+          CDN_BASE_URL: https://skill.artai.top
         run: python scripts/build_dist.py
       - name: Upload dist as workflow artifact
         uses: actions/upload-artifact@v4
